@@ -1,9 +1,9 @@
 # From
 
-| Parameter | type           | default | Description     |
-|-----------|----------------|:-------:|-----------------|
-| anonymous | string         |         | name of table   |
-| anonymous | alias function |         | alias for table |
+| Description     | Type           | Default |
+|-----------------|----------------|---------|
+| name of table   | string!        |         |
+| alias for table | alias function |         |
 
 ```js
 import {from} from 'sql-fns'

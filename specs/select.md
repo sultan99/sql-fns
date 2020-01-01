@@ -1,9 +1,9 @@
 # Select
 
-| Parameter | type     | default | Description          | Result            |
-|-----------|----------|:-------:|----------------------|-------------------|
-| anonymous | string   |         | sql select statement | function → string |
-| anonymous | [string] |   "*"   | list of columns      | function → string |
+| Description          | Type     | Default |
+|----------------------|----------|---------|
+| sql select statement | string   |         |
+| list of columns      | [string] | "*"     |
 
 
 ```js

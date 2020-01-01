@@ -1,12 +1,11 @@
 # Query
-Function has mandatory input `from('table_name')` or `'name of table'`.
+Function has required parameter table name and returns function -> Promise
 
-It returns function -> Promise
-| Parameter        | type      |       default        | Description          |
-|------------------|-----------|:--------------------:|----------------------|
-| anonymous        | string    |                      | name of table        |
-| query functions* | functions | select(*), limit(50) | sql-fns functions    |
-| sub queries      | query     |                      | other query function |
+| Description              | Type                 | Default              |
+|--------------------------|----------------------|----------------------|
+| sql table name           | string! or function! |                      |
+| sql-fns functions        | functions            | select(*), limit(50) |
+| other sub query function | query                |                      |
 
 
 Query functions:
@@ -14,10 +13,12 @@ Query functions:
 select, except, alias, from, where, limit, joins, orderBy, groupBy, having
 union
 
+
 ```js
 import {query} from 'sql-fns'
 
 const findPosts = query(`post`)
+
 const posts = await findPosts()
 
 // SELECT * FROM "post" LIMIT 50
@@ -26,6 +27,7 @@ const posts = await findPosts()
 const findUsers = query(
   from(`user`)
 )
+
 const users = findUser()
 
 // SELECT * FROM "user" LIMIT 50
