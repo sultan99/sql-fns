@@ -4,12 +4,14 @@
     "jest/globals": true,
     "node": true
   },
+  "parserOptions": { "ecmaVersion": 2017 },
   "plugins": ["jest"],
   "rules": {
     "array-bracket-spacing": ["error", "never"],
     "array-callback-return": 2,
     "arrow-spacing": "error",
     "brace-style": ["error", "stroustrup"],
+    "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", {"before": false, "after": true}],
     "computed-property-spacing": ["error", "never"],
     "cond-assign": 0,

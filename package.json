@@ -6,7 +6,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "lint": "eslint **/*.js",
+    "lint": "eslint **/*.js --ignore-path .gitignore",
     "start": "jest --watch",
     "test": "jest --coverage"
   },

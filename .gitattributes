@@ -15,6 +15,7 @@ yarn.lock merge=ours
 .babelrc text eol=lf
 .editorconfig text eol=lf
 .env text eol=lf
+.eslintignore eol=lf
 .eslintrc eol=lf
 *.yml text eol=lf
 
