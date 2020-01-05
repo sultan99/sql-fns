@@ -2,16 +2,14 @@ version: '3.7'
 services:
   postgres:
     image: postgres:11
-    container_name: postgres
+    container_name: sqlfns-postgres
     restart: unless-stopped
     ports:
       - 5432:5432
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_DB=playground
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
     volumes:
-      - database:/var/lib/postgresql/data
-
-volumes:
-  database:
-  public:
-    external: true
+      - ./database/postgres.sh:/docker-entrypoint-initdb.d/dbinit.sh

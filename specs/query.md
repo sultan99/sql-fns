@@ -10,7 +10,7 @@ Function has required parameter table name and returns function -> Promise
 
 Query functions:
 
-select, except, alias, from, where, limit, joins, orderBy, groupBy, having
+select, except, table, from, where, limit, joins, orderBy, groupBy, having
 union
 
 

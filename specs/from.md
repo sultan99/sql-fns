@@ -3,7 +3,7 @@
 | Description     | Type           | Default |
 |-----------------|----------------|---------|
 | name of table   | string!        |         |
-| alias for table | alias function |         |
+| table for table | table function |         |
 
 ```js
 import {from} from 'sql-fns'
@@ -28,12 +28,12 @@ const authors = await findAuthors()
 ```
 
 
-### Example with alias
+### Example with table
 
 ```js
-import {alias} from 'sql-fns'
+import {table} from 'sql-fns'
 
-const u = alias(`usr`)
+const u = table(`usr`)
 const findUsers = query(
   from(`user`, u),
   orderBy(u.name)

@@ -3,4 +3,4 @@
 .vscode
 coverage
 node_modules
-playground
+playground/temp

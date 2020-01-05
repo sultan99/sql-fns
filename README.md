@@ -48,18 +48,15 @@ const pal = await findUser({isCrazy: `yes`, age: gt(21)})
 ### Recomposing existing query
 Here we reuse the existing `findUser` query by adding new conditions and rewriting limit to a new value.
 ```js
-import {alias, query, where, like} from 'sql-fns'
+import {where, like} from 'sql-fns'
 
-const {age, gender} = alias()
-
-const findBrides = query(
-  findUser,
+const findBrides = findUser(user => [
   where(
-    age.between(18, 24),
-    gender.equals(`female`),
+    user.age.between(18, 24),
+    user.gender.equals(`female`),
   ),
-  limit(100)
-)
+  limit(100),
+])
 
 const brides = await findBrides({bio: like(`%sexy%`)})
 
@@ -74,28 +71,26 @@ const brides = await findBrides({bio: like(`%sexy%`)})
 Alias and table join
 
 ```js
-import {alias, query, join} from 'sql-fns'
+import {table, join} from 'sql-fns'
 
-const [c, u] = alias(`cnt`, `usr`)
-const {code: countyCode} = c
-const {age} = u
+const country = table(`country`, `c`)
+const {code: countryCode} = country
 
-const findTeenagers = query(
-  findUser(u),
-  join(`country`, c).on(u.countryId, c.id),
-  limit(100)
-)
+const findTeenagers = findUser(user => [
+  join(country).on(user.countryId, country.id),
+  limit(100),
+])
 
-// we can pass json or functions of alias
-const users = await findTeenagers(
+// for where clause we can pass json or function
+const users = await findTeenagers(({age}) => [
   age.between(10, 19),
-  countyCode.equals(`LU`),
-)
+  countryCode.equals(`LU`),
+])
 
-// SELECT * FROM "user" usr
-//   JOIN "country" cnt ON usr.country_id = cnt.id
-//  WHERE usr.age BETWEEN 10 AND 19
-//    AND cnt.code = 'LU'
+// SELECT * FROM "user" u
+//   JOIN "country" c ON u.country_id = c.id
+//  WHERE u.age BETWEEN 10 AND 19
+//    AND c.code = 'LU'
 //  LIMIT 100
 ```
 
@@ -128,11 +123,8 @@ await updateUsers(
 
 All mutation functions are extendable similar to queries.
 ```js
-import {mutation, not} from 'sql-fns'
-
-const banUsers = mutation(
-  updateUsers,
-  where({role: not(`admin`)}),
+const banUsers = updateUsers(user =>
+  user.role.not(`admin`),
 )
 
 await banUsers()

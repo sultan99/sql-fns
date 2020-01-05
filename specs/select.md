@@ -11,7 +11,7 @@ import {select} from 'sql-fns'
 
 select()
 select(`*`)
-select(`name || surname as fullname`) // no way to apply alias later
+select(`name || surname as fullname`) // no way to apply table later
 select(`id`, `name`)
 select([`id`, `name`])
 ```
