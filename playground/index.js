@@ -1,11 +1,12 @@
 const R = require(`ramda`)
 const {exec} = require(`./pg-pool`)
-const {query, select, from, table, where, limit} = require(`../lib`)
+const {query, select, from, table, limit} = require(`../lib`)
 
 const user = table(`user`, `u`)
+const {id: code, name, email} = user
 
 const queryUser = query(
-  select(user.name, user.email),
+  select(code, name, email.as(`login`)),
   from(user),
   limit(3),
 )
@@ -18,7 +19,9 @@ const findUsers = R.pipe(
 
 async function playground() {
   const users = await findUsers()
-  console.log(users)
+
+  console.info(queryUser())
+  console.info(users)
 }
 
 playground()

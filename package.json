@@ -19,6 +19,16 @@
     "type": "git",
     "url": "https://github.com/sultan99/sql-fns"
   },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-jest": "^23.2.0",
+    "jest": "^24.9.0",
+    "pg": "^7.17.0"
+  },
   "peerDependencies": {
     "pg": "^7.17.0"
   },
@@ -26,14 +36,6 @@
     "pg": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "^23.2.0",
-    "jest": "^24.9.0",
-    "pg": "^7.17.0",
-    "ramda": "^0.26.1"
   },
   "files": [
     "bin/*",
