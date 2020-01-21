@@ -33,10 +33,10 @@ const authors = await findAuthors()
 ```js
 import {table} from 'sql-fns'
 
-const u = table(`usr`)
+const user = table(`user`, `u`)
 const findUsers = query(
-  from(`user`, u),
-  orderBy(u.name)
+  from(user),
+  orderBy(user.name)
 )
 
 const users = findUser()
