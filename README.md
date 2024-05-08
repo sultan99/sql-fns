@@ -52,7 +52,7 @@ import {where, like} from 'sql-fns'
 
 const findBrides = findUser(user => [
   where(
-    user.age.between(18, 24),
+    user.age.between(21, 28),
     user.gender.equals(`female`),
   ),
   limit(100),
@@ -61,7 +61,7 @@ const findBrides = findUser(user => [
 const brides = await findBrides({bio: like(`%sexy%`)})
 
 // SELECT * FROM "user"
-//  WHERE age BETWEEN 18 AND 24
+//  WHERE age BETWEEN 21 AND 28
 //    AND gender = 'female'
 //    AND bio like '%sexy%'
 //  LIMIT 100
@@ -117,7 +117,7 @@ const updateUsers = update(`user`)
 
 await updateUsers(
   set({status: `banned`}),
-  where({age: lt(18)}),
+  where({age: lt(21)}),
 )
 ```
 
@@ -129,7 +129,7 @@ const banUsers = updateUsers(user =>
 
 await banUsers()
 
-// UPDATE "user" SET status = 'banned' WHERE age < 18 AND role <> 'admin';
+// UPDATE "user" SET status = 'banned' WHERE age < 21 AND role <> 'admin';
 ```
 
 ## To be continued ...
